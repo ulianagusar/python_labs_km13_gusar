@@ -70,11 +70,11 @@ def fjf(list_inversia,list_suma) :
     ansver=list12[i]*list_suma[i]+helpp #multiplying the product of rows by -1 or 1 and finding the total amount
     helpp=ansver
  return ansver
-print("Enter the size of the matrix")
-help3=1
 import sys
 help=1
 while help==1: #cycle to repeat the program
+ print("Enter the size of the matrix")
+ help3=1
  while help3==1 :
   try :
     a=int(input())
@@ -89,7 +89,6 @@ while help==1: #cycle to repeat the program
     help3=1
   except OverflowError :
     print("you entered an incorrect value")
-    help3=1
  print ("determinant =",(fjf(hhhh(permutatiom_list(a)),product(dict_for_sum(random_matrix(a)),permutatiom_list(a)))))
  print("to restart the program, write 'again', and to exit anything else")
  again=input()

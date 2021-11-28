@@ -20,23 +20,30 @@ dirs = [
     )
 ]
 
-# ��� ��� ���
-def search(dirts,filename):
+# ВАШ КОД ТУТ
+def search(dirts,filename,text="",list_ans=[]):
     if (type(dirts)==list or type(dirts)==tuple) and (type(dirts[i])!=list and type(dirts[i])!=tuple for i in range(0,len(dirts)) ) and (filename in dirts):
-        print (filename)
+        if text==None:
+              list_ans=[] 
+        text=text+"/"+filename
+        list_ans.append(text)#adding an answer to the list
+    #check if there is a folder in the folder with the searched file
     if (type(dirts)==list or type(dirts)==tuple) and (type(dirts[i])==list or type(dirts[i])==tuple for i in range(0,len(dirts)) ) and (filename in dirts):
       for s in dirts :
          if type(s)==list or type(s)==tuple :
-            search(s,filename) 
+                search(s,filename,text,list_ans)
     elif  type(dirts)==list :
       for s in dirts :
         if type(s)==list or type(s)==tuple :
-            print ("       ")
-            search(s,filename)
+               search(s,filename,text,list_ans)
+      return list_ans
     elif type(dirts)==tuple :
-            print(dirts[0])
-            return  [dirts[0]]+[search(dirts[1],filename)]
-# ����²���
+            if list_ans==None:
+              list_ans=[]  
+            text=text+"/"+(dirts[0]) #add path to file
+            search(dirts[1],filename,text,list_ans)    
+#Програма працює,якщо робити 1 print за раз
+# ПЕРЕВІРКА
 
 print(search(dirs, 'file1'))
 print(search(dirs, 'file2'))
